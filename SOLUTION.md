@@ -35,3 +35,7 @@ docker run -d -p 3000:3000 e1451e72da0e
 docker ps
 docker stop clever_ptolemy
 ```
+
+## Step 6: Add Github Actions
+
+Create linter.yml, build.yml and audit.yml
