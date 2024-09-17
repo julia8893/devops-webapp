@@ -39,3 +39,10 @@ docker stop clever_ptolemy
 ## Step 6: Add Github Actions
 
 Create linter.yml, build.yml and audit.yml
+
+## Step 7: Create Private Docker Repository / Add Github Action for Docker Image
+
+Sign in to DockerHub and create a private repository
+{dockerUserName}/devops
+Add Repository secrets for Docker in Github (Security/Secrets and variables/Actions)
+Create release.yml
