@@ -28,8 +28,8 @@ jobs:
 
       - name: Tag Docker image
         run: |
-          docker tag devops-webapp-github-action:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/devops:latest
+          docker tag devops-webapp-github-action:${{ github.sha }} devops-webapp-github-action:latest
 
       - name: Push Docker image to Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/devops:latest
+          docker push devops-webapp-github-action:latest
