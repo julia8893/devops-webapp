@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-app
+spec:
+  replicas: 3 # Number of replicas for scaling
+  selector:
+    matchLabels:
+      app: nextjs-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1 # Allow one extra pod during update
+      maxUnavailable: 0 # Ensure zero downtime by not allowing unavailable pods
+  template:
+    metadata:
+      labels:
+        app: nextjs-app
+    spec:
+      containers:
+        - name: nextjs-app
+          image: julia8893/nextjs-app:1.0
+          ports:
+            - containerPort: 3000
+          livenessProbe:
+            httpGet:
+              path: / # Assuming the Next.js app responds to the root path
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: / # Readiness check to ensure the pod is ready to serve traffic
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
